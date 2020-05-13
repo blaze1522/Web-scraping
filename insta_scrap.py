@@ -4,7 +4,7 @@ Only first 4 tags will be explored. See line 41
 
 '''
 
-
+import wiki_scrapping_food
 import pandas as pd
 import selenium
 from selenium import webdriver
@@ -16,7 +16,14 @@ from selenium.common.exceptions import TimeoutException
 timeout = 15
 driver = webdriver.Chrome(executable_path='chromedriver')
 
-dataframe = pd.read_csv('food.csv')
+try:
+    dataframe = pd.read_csv('food.csv')
+    print('Try')
+except:
+    wiki_scrapping_food.wikiscrap()
+    dataframe = pd.read_csv('food.csv')
+    print('Except')
+
 tags = [x for x in dataframe.food_name]
 
 dict_tags = {}
@@ -38,7 +45,7 @@ for i in range(len(tags)):
     images = [x.get_attribute('src') for x in image_src]
 
     dict_tags[i] = images
-    if i == 20:
+    if i == 4:
         break
     print("--------YYYYYYAAAAAASSSSSS----------")
 
