@@ -18,11 +18,10 @@ driver = webdriver.Chrome(executable_path='chromedriver')
 
 try:
     dataframe = pd.read_csv('food.csv')
-    print('Try')
+
 except:
     wiki_scrapping_food.wikiscrap()
     dataframe = pd.read_csv('food.csv')
-    print('Except')
 
 tags = [x for x in dataframe.food_name]
 
@@ -38,7 +37,9 @@ for i in range(len(tags)):
     try:
         WebDriverWait(driver, timeout).until(
             EC.visibility_of_element_located((By.CLASS_NAME, "FFVAD")))
+        print("Read")
     except:
+        print("Skipped")
         continue
 
     image_src = driver.find_elements_by_class_name("FFVAD")
@@ -47,8 +48,11 @@ for i in range(len(tags)):
     dict_tags[i] = images
     if i == 4:
         break
-    print("--------YYYYYYAAAAAASSSSSS----------")
 
-print(len(images))
+
+print("Number of pages read =", len(dict_tags))
+
+# This Dictionary can now be used
+# print(dict_tags[i])
 
 driver.quit()

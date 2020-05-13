@@ -26,10 +26,7 @@ def wikiscrap():
 
     foodlist = [remove_space(x.text) for x in foodname if x.text != '']
 
-    for i in foodlist:
-        print(i)
-
-    print(len(foodlist))
+    print("No of names scrapped =", len(foodlist))
 
     driver.quit()
 
