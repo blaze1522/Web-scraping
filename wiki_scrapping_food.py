@@ -39,6 +39,3 @@ def wikiscrap():
 
     food = pd.DataFrame(foodlist, columns=['food_name'])
     food.to_csv('food.csv')
-
-
-wikiscrap()
