@@ -4,11 +4,18 @@ from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 
 
-def remove_space(x):
+def make_tags(x):
     char_list = [i for i in x]
     for i in char_list:
         if i == ' ':
             char_list.remove(i)
+    j = 0
+    for j in range(len(char_list)):
+        if char_list[j] == '(':
+            char_list = char_list[0: j]
+            break
+        else:
+            j += 1
     new = ""
     for s in char_list:
         new += s
@@ -24,7 +31,7 @@ def wikiscrap():
 
     foodname = driver.find_elements_by_xpath("//tbody/tr/td[position()=1]")
 
-    foodlist = [remove_space(x.text) for x in foodname if x.text != '']
+    foodlist = [make_tags(x.text) for x in foodname if x.text != '']
 
     print("No of names scrapped =", len(foodlist))
 
@@ -32,3 +39,6 @@ def wikiscrap():
 
     food = pd.DataFrame(foodlist, columns=['food_name'])
     food.to_csv('food.csv')
+
+
+wikiscrap()
