@@ -6,9 +6,11 @@ from selenium.webdriver.chrome.options import Options
 
 def make_tags(x):
     char_list = [i for i in x]
+    # Remove spaces
     for i in char_list:
         if i == ' ':
             char_list.remove(i)
+    # Remove bracketed text
     j = 0
     for j in range(len(char_list)):
         if char_list[j] == '(':
@@ -29,8 +31,10 @@ def wikiscrap():
     driver = webdriver.Chrome(executable_path='chromedriver', options=options)
     driver.get('https://en.wikipedia.org/wiki/List_of_Indian_dishes')
 
+    # Finding all the names of foods from a wikipedia page
     foodname = driver.find_elements_by_xpath("//tbody/tr/td[position()=1]")
 
+    # Rejecting empty cells
     foodlist = [make_tags(x.text) for x in foodname if x.text != '']
 
     print("No of names scrapped =", len(foodlist))
