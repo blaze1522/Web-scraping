@@ -65,9 +65,9 @@ class hashtags():
         return [num_posts, tag_list]
 
 
-# print(help(hashtags))
-
+'''
 food1 = hashtags("aloogobi", [], 0, [])
 print(len(food1.get_related()))
 print(food1.related)
 print(food1.num_posts)
+'''
