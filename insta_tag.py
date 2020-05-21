@@ -36,6 +36,7 @@ class hashtags():
 
     def get_related(self):
         rel_class = "LFGs8.xil3i"
+        num_posts_class = "g47SY"
 
         url = 'https://www.instagram.com/explore/tags/' + self.name + '/'
         driver.get(url)
@@ -51,19 +52,22 @@ class hashtags():
 
         # Pick all the elements with required class
         rel_tags = driver.find_elements_by_class_name(rel_class)
+        num_posts_tags = driver.find_elements_by_class_name(num_posts_class)
 
         # Make a list of related tags
         tag_list = [remove_htag(x.text) for x in rel_tags]
+        num_posts = num_posts_tags[0].text
+
         self.related = tag_list
+        self.num_posts = num_posts
 
         driver.quit()
-        return tag_list
+        return [num_posts, tag_list]
 
 
 # print(help(hashtags))
 
-'''
-food1 = hashtags("aloogobi", ['qwe', 'rty', 'asd', 'fghj'], 10124, [])
-food1.get_related()
+food1 = hashtags("aloogobi", [], 0, [])
+print(len(food1.get_related()))
 print(food1.related)
-'''
+print(food1.num_posts)
