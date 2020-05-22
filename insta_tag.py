@@ -42,6 +42,8 @@ class hashtags():
 
         url = 'https://www.instagram.com/explore/tags/' + self.name + '/'
 
+        # This code block looks for a browser instance if it doesn't find one then it creates one.
+        # This options in the browser instance blocks images and makes loading faster and there is less data consumed.
         try:
             driver.get(url)
             print("Found browser")
@@ -54,7 +56,7 @@ class hashtags():
             driver.get(url)
             print("Didn't find Browser")
 
-        # Wait for the required class of elements in this case images to appear.
+        # Wait for the required class of elements to appear and get the elements.
         try:
             WebDriverWait(driver, timeout).until(
                 EC.visibility_of_element_located((By.CLASS_NAME, rel_class)))
@@ -65,18 +67,20 @@ class hashtags():
         try:
             WebDriverWait(driver, timeout_less).until(
                 EC.visibility_of_element_located((By.CLASS_NAME, num_posts_class)))
-            num_posts_tags = driver.find_elements_by_class_name(
+            num_posts_tags = driver.find_element_by_class_name(
                 num_posts_class)
         except:
             print("skipped page")
             return False
 
-        # Make a list of related tags
+        # Make a list of related tags and number of posts and assign them to respective attributes.
         tag_list = [remove_htag(x.text) for x in rel_tags]
-        num_posts = num_posts_tags[0].text
+        num_posts = num_posts_tags.text
 
         self.related = tag_list
         self.num_posts = num_posts
+
+        # Update the date-time when the information was obtained.
         self.time = datetime.datetime.now()
 
         driver.quit()
@@ -90,6 +94,7 @@ class hashtags():
 
         url = 'https://www.instagram.com/explore/tags/' + self.name + '/'
 
+        # This code block looks for a browser instance if it doesn't find one then it creates one.
         try:
             driver.get(url)
             print("Found browser")
@@ -98,6 +103,7 @@ class hashtags():
             driver.get(url)
             print("Didn't find Browser")
 
+        # Wait for the required class of elements to appear and get the elements.
         try:
             WebDriverWait(driver, timeout).until(
                 EC.visibility_of_element_located((By.CLASS_NAME, img_class)))
@@ -105,32 +111,32 @@ class hashtags():
         except:
             return False
 
+        # Make a list of related tags and number of posts and assign them to respective attributes.
         img_links = [x.get_attribute('src') for x in img_elem]
 
         self.img_links = img_links
 
         driver.quit()
-
         return img_links
 
-# Test code - Uncomment to use
+# Test code - Uncomment to use.
 
 
 '''
 food1 = hashtags('aloogobi')
-print(len(food1.get_data()))
+food1.get_data()
 print(food1.related)
 print(food1.num_posts)
 print(food1.time)
-print(len(food1.get_img()))
+print("Number of links =", len(food1.get_img()))
 print(food1.img_links)
 
 food2 = hashtags(food1.related[0])
-print(len(food2.get_data()))
+food2.get_data()
 print(food2.related)
 print(food2.num_posts)
 print(food2.time)
-print(len(food2.get_img()))
+print("Number of links =", len(food2.get_img()))
 print(food2.img_links)
 '''
 
