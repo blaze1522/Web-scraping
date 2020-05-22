@@ -46,7 +46,6 @@ class hashtags():
         # This options in the browser instance blocks images and makes loading faster and there is less data consumed.
         try:
             driver.get(url)
-            print("Found browser")
         except:
             chrome_options = webdriver.ChromeOptions()
             prefs = {"profile.managed_default_content_settings.images": 2}
@@ -54,7 +53,6 @@ class hashtags():
             driver = webdriver.Chrome(
                 executable_path='chromedriver', chrome_options=chrome_options)
             driver.get(url)
-            print("Didn't find Browser")
 
         # Wait for the required class of elements to appear and get the elements.
         try:
@@ -71,6 +69,7 @@ class hashtags():
                 num_posts_class)
         except:
             print("skipped page")
+            driver.quit()
             return False
 
         # Make a list of related tags and number of posts and assign them to respective attributes.
@@ -97,11 +96,9 @@ class hashtags():
         # This code block looks for a browser instance if it doesn't find one then it creates one.
         try:
             driver.get(url)
-            print("Found browser")
         except:
             driver = webdriver.Chrome(executable_path='chromedriver')
             driver.get(url)
-            print("Didn't find Browser")
 
         # Wait for the required class of elements to appear and get the elements.
         try:
@@ -109,6 +106,7 @@ class hashtags():
                 EC.visibility_of_element_located((By.CLASS_NAME, img_class)))
             img_elem = driver.find_elements_by_class_name(img_class)
         except:
+            driver.quit()
             return False
 
         # Make a list of related tags and number of posts and assign them to respective attributes.
