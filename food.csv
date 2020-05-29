@@ -1,8 +1,7 @@
 ,food_name
 0,porkbharta
 1,chak-haokheer
-2,"galho
-"
+2,galho
 3,aloogobi
 4,alootikki
 5,aloomatar
@@ -45,7 +44,7 @@
 42,kadaipaneer
 43,kadhipakoda
 44,karelabharta
-45,kathameethapetha/halwakadoo
+45,kathameethapetha
 46,kheer
 47,khichdi
 48,kofta
@@ -87,11 +86,10 @@
 84,shahitukra
 85,singhadahalwa
 86,soojihalwa
-87,sweetpethas/kesarpetha/pistapetha
+87,sweetpethas
 88,vegetablejalfrezi
 89,tandoorichicken
-90,"tandoorifishtikka
-"
+90,tandoorifishtikka
 91,attu
 92,avial
 93,halwa
@@ -157,9 +155,9 @@
 153,"yeluminchamsadam,chitranna"
 154,amti
 155,zunkaorpitla
-156,kolim/jawla
+156,kolim
 157,saath
-158,naralachivadi/khobryachivadi/coconutvadi
+158,naralachivadi
 159,bajrinorotlo
 160,modak
 161,barfi
@@ -174,8 +172,7 @@
 170,chorafali
 171,coprapaak
 172,daaldhokli
-173,"dabeli
-"
+173,dabeli
 174,dahivada
 175,dalithoy
 176,dhokla
@@ -257,7 +254,7 @@
 252,kumolsawul
 253,loskora
 254,luchi
-255,malpua/malpoa
+255,malpua
 256,momo
 257,murinaaru
 258,panitenga
