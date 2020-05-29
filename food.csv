@@ -1,7 +1,8 @@
 ,food_name
 0,porkbharta
 1,chak-haokheer
-2,galho
+2,"galho
+"
 3,aloogobi
 4,alootikki
 5,aloomatar
@@ -89,7 +90,8 @@
 87,sweetpethas/kesarpetha/pistapetha
 88,vegetablejalfrezi
 89,tandoorichicken
-90,tandoorifishtikka
+90,"tandoorifishtikka
+"
 91,attu
 92,avial
 93,halwa
@@ -172,7 +174,8 @@
 170,chorafali
 171,coprapaak
 172,daaldhokli
-173,dabeli
+173,"dabeli
+"
 174,dahivada
 175,dalithoy
 176,dhokla

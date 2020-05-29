@@ -47,5 +47,4 @@ def wikiscrap():
 
 tags = wikiscrap()
 
-print(len(tags))
 print(tags)
