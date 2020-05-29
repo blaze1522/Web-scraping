@@ -5,7 +5,7 @@ If you have slow internet the increase timeout time in insta_tag.py.
 '''
 
 import pandas as pd
-import wiki_scrapping_food
+import wiki_scrapping_food_bs4 as wsf
 from insta_tag import hashtags
 
 # Read food.csv is avaiable else first write it
@@ -13,7 +13,7 @@ try:
     dataframe = pd.read_csv('food.csv')
 
 except:
-    wiki_scrapping_food.wikiscrap()
+    wsf.wikiscrap()
     dataframe = pd.read_csv('food.csv')
 
 tags = [x for x in dataframe.food_name]
