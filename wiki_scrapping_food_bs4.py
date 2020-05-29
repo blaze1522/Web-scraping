@@ -13,7 +13,7 @@ def make_tags(x):
     # Remove bracketed text
     j = 0
     for j in range(len(char_list)):
-        if char_list[j] in '(':
+        if char_list[j] in ['(', '\n', '/']:
             char_list = char_list[0: j]
             break
         else:
@@ -32,6 +32,8 @@ def wikiscrap():
     foodlist = []
     foodname = ''
 
+    # Finding all the names of foods from a wikipedia page
+
     for table in tables[1:6]:
         for row in table.findAll('tr')[1:]:
             foodname = row.findAll('td')[0].text
@@ -43,9 +45,3 @@ def wikiscrap():
     food.to_csv('food.csv')
 
     return foodlist
-
-
-tags = wikiscrap()
-
-print(len(tags))
-print(tags)
